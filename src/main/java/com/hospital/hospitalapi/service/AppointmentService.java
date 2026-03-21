@@ -89,7 +89,6 @@ public class AppointmentService {
         Appointment saved = appointmentRepository.save(appointment);
         return mapToDTO(saved);
 
-
     }
     // getAppointmentsByDoctor... find doc by id
     public List<AppointmentDTO> getAppointmentsByDoctor(Long id){
