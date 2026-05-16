@@ -77,7 +77,7 @@ public class AppointmentServiceTest {
                 .patientName(patient.getFirstName() + " " + patient.getLastName())
                 .doctorId(1L)
                 .patientId(1L)
-                .appStatus("SCHEDULED")
+                .appStatus(appointment.getAppStatus())
                 .build();
     }
         // ===  TEST 1 ===

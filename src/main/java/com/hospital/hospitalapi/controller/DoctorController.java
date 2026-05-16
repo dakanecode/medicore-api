@@ -2,9 +2,13 @@ package com.hospital.hospitalapi.controller;
 
 import com.hospital.hospitalapi.dto.DoctorDTO;
 
+import com.hospital.hospitalapi.dto.DoctorFilterRequest;
+import com.hospital.hospitalapi.dto.common.PagedResponse;
 import com.hospital.hospitalapi.service.DoctorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,16 +28,32 @@ public class DoctorController {
     }
 
     // GET ALL doctors
-    @GetMapping
-    public ResponseEntity<List<DoctorDTO>> getAllDoctor(){
-        return ResponseEntity.ok(doctorService.getAllDoctor());
-    }
+    //@GetMapping
+    //public ResponseEntity<List<DoctorDTO>> getAllDoctor(){
+       // return ResponseEntity.ok(doctorService.getAllDoctor());
+    //}
 
     // GET one doctor by ID
     @GetMapping("/{id}")
     public ResponseEntity<DoctorDTO> getDoctorById(@PathVariable Long id){
         return ResponseEntity.ok(doctorService.getDoctorById(id));
     }
+    // getMapping
+    @GetMapping
+    public ResponseEntity<PagedResponse<DoctorDTO>> getDoctors(
+            @PageableDefault(size = 10, sort = "lastName") Pageable pageable,
+            @RequestParam(required = false) String speciality,
+            @RequestParam(required = false) String department,
+            @RequestParam(required = false) Boolean available,
+            @RequestParam(required = false) int minYears,
+            @RequestParam(required = false) String keyword){
+        DoctorFilterRequest filter = new DoctorFilterRequest(
+                speciality, department, available, minYears, keyword
+        );
+        return ResponseEntity.ok(doctorService.getDoctorsPaged(filter, pageable));
+    }
+
+
     // by specialty
     @GetMapping("/specialty/{specialty}")
     public ResponseEntity<List<DoctorDTO>> getDoctorsBySpecialty(@PathVariable String specialty){

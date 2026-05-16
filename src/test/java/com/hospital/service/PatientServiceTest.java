@@ -55,7 +55,7 @@ class PatientServiceTest {
                 .phoneNumber("0712345678")
                 .address("123 Nairobi")
                 .dateOfBirth("1990-01-15")
-                .gender("MALE")
+                .gender(patient.getGender())
                 .build();
     }
 

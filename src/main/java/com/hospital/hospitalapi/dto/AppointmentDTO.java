@@ -1,5 +1,6 @@
 package com.hospital.hospitalapi.dto;
 
+import com.hospital.hospitalapi.entity.Appointment;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class AppointmentDTO {
 
     private  String docNotes;
 
-    private String appStatus;
+    private Appointment.AppointmentStatus appStatus;
 
     @NotNull(message = "doctor id is required")
     private Long doctorId;

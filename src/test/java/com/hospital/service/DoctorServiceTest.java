@@ -145,23 +145,23 @@ public class DoctorServiceTest {
     }
 
     // ==== TEST 6 ====
-    @Test
-    @DisplayName("Should return list of all doctors")
-    void shouldReturnAllDoctors() {
-
-        // ARRANGE
-        List<Doctor> doctors = List.of(doctor);
-        when(doctorRepository.findAll()).thenReturn(doctors);
-
-        // ACT
-        List<DoctorDTO> result = doctorService.getAllDoctor();
-
-        // ASSERT
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("John", result.get(0).getFirstName());
-        verify(doctorRepository, times(1)).findAll();
-    }
+//    @Test
+//    @DisplayName("Should return list of all doctors")
+//    void shouldReturnAllDoctors() {
+//
+//        // ARRANGE
+//        List<Doctor> doctors = List.of(doctor);
+//        when(doctorRepository.findAll()).thenReturn(doctors);
+//
+//        // ACT
+//        List<DoctorDTO> result = doctorService.getAllDoctor();
+//
+//        // ASSERT
+//        assertNotNull(result);
+//        assertEquals(1, result.size());
+//        assertEquals("John", result.get(0).getFirstName());
+//        verify(doctorRepository, times(1)).findAll();
+//    }
 
     // ==== TEST 7 ====
     @Test

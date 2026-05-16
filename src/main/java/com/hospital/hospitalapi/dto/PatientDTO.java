@@ -1,4 +1,5 @@
 package com.hospital.hospitalapi.dto;
+import com.hospital.hospitalapi.entity.Patient;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -29,5 +30,5 @@ public class PatientDTO {
     @NotBlank(message = "Date of birth is required")
     private String dateOfBirth;
 
-    private String gender;
+    private Patient.Gender gender;
 }
